@@ -12,7 +12,7 @@ public class Main implements ActionListener{
     JButton boutonDeci, boutonEgal, boutonSupp, boutonEffa;
     JPanel panneau;
 
-    Font policeUtilisee = new Font("Calibri",Font.BOLD,25);
+    Font policeUtilisee = new Font("Calibri",Font.BOLD,20);
 
     double num1 = 0, num2 = 0, result = 0;
     char operateur;
@@ -21,7 +21,7 @@ public class Main implements ActionListener{
 
         fenetre = new JFrame("Calculatrice basique");
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fenetre.setSize(360, 500);
+        fenetre.setSize(360, 440);
         fenetre.setLayout(null);
 
         zoneAffichage = new JTextField();
@@ -50,6 +50,8 @@ public class Main implements ActionListener{
         for(int i = 0; i < 8; i++) { // ajout de l'actionlistener à chaque bouton
             boutonsFonctions[i].addActionListener(this);
             boutonsFonctions[i].setFont(policeUtilisee);
+            boutonsFonctions[i].setHorizontalAlignment(SwingConstants.CENTER);
+            boutonsFonctions[i].setVerticalAlignment(SwingConstants.BOTTOM);
             boutonsFonctions[i].setFocusable(false);
         }
 
@@ -68,6 +70,8 @@ public class Main implements ActionListener{
             boutonsChiffres[i] = new JButton(String.valueOf(i));
             boutonsChiffres[i].addActionListener(this);
             boutonsChiffres[i].setFont(policeUtilisee);
+            boutonsChiffres[i].setHorizontalAlignment(SwingConstants.CENTER);
+            boutonsChiffres[i].setVerticalAlignment(SwingConstants.BOTTOM);
             boutonsChiffres[i].setFocusable(false);
         }
 
@@ -77,6 +81,28 @@ public class Main implements ActionListener{
         fenetre.add(boutonEffa);
         fenetre.add(boutonSupp);
 
+        JPanel positionTouches = new JPanel();
+        positionTouches.setBounds(40, 140, 260, 240);
+        //positionTouches.setBackground(Color.gray); //aidait à positionner correctement le panel
+        positionTouches.setLayout(new GridLayout(4,4,20,25));
+        positionTouches.add(boutonsChiffres[1]);
+        positionTouches.add(boutonsChiffres[2]);
+        positionTouches.add(boutonsChiffres[3]);
+        positionTouches.add(boutonsFonctions[3]);
+        positionTouches.add(boutonsChiffres[4]);
+        positionTouches.add(boutonsChiffres[5]);
+        positionTouches.add(boutonsChiffres[6]);
+        positionTouches.add(boutonsFonctions[2]);
+        positionTouches.add(boutonsChiffres[7]);
+        positionTouches.add(boutonsChiffres[8]);
+        positionTouches.add(boutonsChiffres[9]);
+        positionTouches.add(boutonsFonctions[1]);
+        positionTouches.add(boutonsChiffres[0]);
+        positionTouches.add(boutonsFonctions[4]);
+        positionTouches.add(boutonsFonctions[5]);
+        positionTouches.add(boutonsFonctions[0]);
+
+        fenetre.add(positionTouches);
         fenetre.setResizable(false);
         fenetre.add(zoneAffichage);
         fenetre.setLocationRelativeTo(null);
